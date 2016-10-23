@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.swing.JOptionPane;
 
 
 public class CountingWords 
@@ -21,12 +22,12 @@ public class CountingWords
         while ((readChars = is.read(c)) != -1) {
             empty = false;
             for (int i = 0; i < readChars; ++i) {
-                if (c[i] == '\n' || c[i] == '\t' || c[i] == ' ' || c[i] == '.') {
+                if ((c[i] == '\n' || c[i] == '\t' || c[i] == ' ' || c[i] == '.') && !Character.isWhitespace(c[i+1])) {
                     ++count;
                 }
             }
         }
-        return (count == 0 && !empty) ? 0 : count+1;
+        return count;
     } finally {
         is.close();
     }
