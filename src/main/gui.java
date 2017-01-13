@@ -71,7 +71,7 @@ public class gui extends javax.swing.JFrame {
         a.showOpenDialog(null);
         File text = new File(a.getSelectedFile().getPath());
         try {
-            JOptionPane.showMessageDialog(null, Integer.toString(CountingWords.coutingwords(text)));
+            JOptionPane.showMessageDialog(null, Integer.toString(new CountingWords().coutingwords(text)));
         } catch (IOException ex) {
             Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);
         }

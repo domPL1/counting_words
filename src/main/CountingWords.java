@@ -10,12 +10,12 @@ import java.io.InputStream;
 
 public class CountingWords 
 {
-    public static int coutingwords(File filename) throws IOException
+    public int coutingwords(File filename) throws IOException
     {
         InputStream is = new BufferedInputStream(new FileInputStream(filename));
          try {
         byte[] c = new byte[1024];
-        int count = 0;
+        int count = 1;
         int readChars = 0;
         boolean empty = true;
         while ((readChars = is.read(c)) != -1) {
@@ -26,10 +26,12 @@ public class CountingWords
                 }
             }
         }
+        if (empty){
+            return 0;
+        }
         return count;
     } finally {
         is.close();
     }
-
     }
 }
